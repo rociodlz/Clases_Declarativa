@@ -1,0 +1,25 @@
+% Ejercicio 1 de arboles binarios
+% CASO 1: El árbol está vacío
+buscarABB(Dato, []):-
+    write('El dato: '),
+    write(Dato),
+    write(', NO se encuentra en el arbol'),
+    !.
+
+% CASO 2: Encontramos el número
+buscarABB(Dato, [_, Dato, _]):-
+    write('Se ha ENCONTRADO el dato: '),
+    write(Dato),
+    !.
+
+% CASO 3: Buscar en el subárbol izquierdo
+buscarABB(Dato, [SubAI, DatoN, _]):-
+    <(Dato, DatoN),
+    buscarABB(Dato, SubAI),
+    !.
+
+% CASO 4: Buscar en el subárbol derecho
+buscarABB(Dato, [_, DatoN, SubAD]):-
+    >(Dato, DatoN),
+    buscarABB(Dato, SubAD).
+
